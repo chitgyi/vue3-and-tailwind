@@ -1,8 +1,30 @@
 <template>
-  <div class="post-body" v-for="post in posts" :key="post.id">
-    <div class="post">
-      <h4>{{ post.title.toUpperCase() }}</h4>
-      <p>{{ post.body }}</p>
+  <div
+    class="container mx-auto grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1"
+  >
+    <div
+      class="p-2 m-2 rounded-md shadow-md"
+      v-for="post in posts"
+      :key="post.id"
+    >
+      <h4 class="post-title">
+        {{ post.title.toUpperCase() }}
+      </h4>
+      <p class="post-body">{{ post.body }}</p>
+
+      <div class="buttons mt-1">
+        <button
+          class="bg-blue-700 text-white w-20 py-1 shadow-md rounded-l-sm rounded-r-none"
+        >
+          Edit
+        </button>
+
+        <button
+          class="bg-red-700 text-white w-20 py-1 shadow-md rounded-r-sm rounded-l-none"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -31,26 +53,22 @@ export default {
 </script>
 
 <style scoped>
+.buttons {
+  float: right;
+}
 .post-body {
-  margin: 0 auto;
-}
-.post {
-  border: 1px solid;
-  width: 400px;
-  margin: 0.5rem auto;
-  padding: 1rem;
-  border-radius: 0.5em;
-}
-
-.post h4 {
-  margin: 0 0 10px 0;
-}
-
-.post p {
-  margin: 0;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.post-title {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;

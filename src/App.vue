@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="font-serif">
     <AppBar />
     <router-view> </router-view>
   </div>
