@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.center {
+    color: blue;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
