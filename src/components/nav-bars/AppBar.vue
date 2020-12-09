@@ -1,18 +1,20 @@
 <template>
-  <div class="shadow-lg p-5 bg-white w-full">
-    <ul class="container mx-auto font-semibold font-mono">
-      <span v-for="(nav, index) in navs" :key="index">
-        <router-link
-          :to="nav.route"
-          id="router-link"
-          v-on:click.passive="onClickNav(nav.route)"
-          ><li :class="{ 'text-blue-700': pathname == nav.route }">
-            {{ nav.title }}
-          </li></router-link
+  <ul class="container mx-auto font-semibold font-mono">
+    <span v-for="(nav, index) in navs" :key="index">
+      <router-link
+        :to="nav.route"
+        id="router-link"
+        v-on:click.passive="onClickNav(nav.route)"
+        ><li
+          :class="{
+            'text-white': pathname == nav.route,
+          }"
         >
-      </span>
-    </ul>
-  </div>
+          {{ nav.title }}
+        </li></router-link
+      >
+    </span>
+  </ul>
 </template>
 
 <script>
@@ -22,15 +24,15 @@ export default {
     const pathname = ref("/");
     const navs = ref([
       {
-        title: "HOME",
+        title: "Home",
         route: "/",
       },
       {
-        title: "POSTS",
+        title: "Posts",
         route: "/posts",
       },
       {
-        title: "CONTACT",
+        title: "Contact",
         route: "/contact",
       },
     ]);
@@ -55,11 +57,5 @@ export default {
 <style  scoped>
 #router-link {
   text-decoration: none;
-}
-
-li {
-  display: inline;
-  margin-right: 1.2rem;
-  cursor: pointer;
 }
 </style>

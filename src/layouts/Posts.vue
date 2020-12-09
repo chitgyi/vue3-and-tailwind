@@ -2,7 +2,7 @@
   <div class="container mx-auto">
     <loading-indicator v-if="loading" />
     <post-list-view :posts="posts" :onDelete="onDelete" />
-    <error-view v-if="errorMessage" message="Failed to load" />
+    <error-view v-if="errorMessage && !loading" message="Failed to load" />
   </div>
 </template>
 
