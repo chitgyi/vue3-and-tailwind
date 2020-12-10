@@ -45,11 +45,13 @@
 import { provide } from "vue";
 import AppBar from "./components/nav-bars/AppBar";
 import useProduct from "./composables/product";
+import useDialog from "./composables/dialog";
 
 export default {
   components: { AppBar },
   setup() {
     provide("POST_PROVIDER", useProduct());
+    provide("DIALOG_PROVIDER", useDialog());
   },
 };
 </script>
