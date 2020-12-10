@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { inject, toRef } from "vue";
+import { inject, onUnmounted, toRef } from "vue";
 
 export default {
   props: {
@@ -25,6 +25,8 @@ export default {
         show.value = false;
       }
     };
+
+    onUnmounted(() => (show.value = false));
 
     return { isShown: show, onCancel, onDismiss };
   },

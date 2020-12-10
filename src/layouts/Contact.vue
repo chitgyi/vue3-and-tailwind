@@ -2,12 +2,12 @@
   <div class="container">
     <button @click.prevent="showModel">Show Dialog</button>
     <modal dismissable>
-      <div class="bg-white w-96 grid p-5 rounded-md space-y-2">
+      <div class="bg-white w-96 grid px-3 py-2 rounded-md space-y-2 m-5">
         <p class="font-bold text-lg">Add Type</p>
         <input type="text" class="rounded border p-1" placeholder="Name" />
         <input type="text" class="rounded border p-1" placeholder="Type" />
         <textarea class="rounded border p-1" placeholder="Description" />
-        <div class="grid grid-cols-3 space-x-2 pt-3">
+        <div class="grid grid-cols-3 space-x-2 py-2">
           <button
             type="submit"
             @click="onCancel"
