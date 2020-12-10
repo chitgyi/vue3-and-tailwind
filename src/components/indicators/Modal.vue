@@ -13,7 +13,6 @@ import { inject, onUnmounted, toRef } from "vue";
 
 export default {
   props: {
-    show: Boolean,
     dismissable: Boolean,
   },
   setup(props) {

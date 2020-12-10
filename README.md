@@ -1,4 +1,4 @@
-# Vue3 Implementation
+# Vue3 && Tailwind CSS Implementation
 
 ## Project setup
 ```
