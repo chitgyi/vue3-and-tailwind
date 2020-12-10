@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
     <loading-indicator v-if="loading" />
-    <post-list-view :posts="posts" :onDelete="onDelete" />
+    <product-list-view :products="products" :onDelete="onDelete" />
     <error-view v-if="errorMessage && !loading" message="Failed to load" />
   </div>
 </template>
@@ -11,20 +11,20 @@ import { inject, onMounted } from "vue";
 
 import LoadingIndicator from "../components/indicators/LoadingIndicator";
 import ErrorView from "../components/views/ErrorView.vue";
-import PostListView from "../components/views/PostListView.vue";
+import ProductListView from "../components/views/ProductListView.vue";
 
 export default {
-  name: "Posts",
-  components: { PostListView, LoadingIndicator, ErrorView },
+  name: "Products",
+  components: { ProductListView, LoadingIndicator, ErrorView },
   setup() {
     ErrorView;
-    const { posts, loading, errorMessage, fetchPost, onDelete } = inject(
+    const { products, loading, errorMessage, fetchProduct, onDelete } = inject(
       "POST_PROVIDER"
     );
-    onMounted(() => fetchPost());
+    onMounted(() => fetchProduct());
 
     return {
-      posts,
+      products,
       loading,
       errorMessage,
       onDelete,
@@ -32,4 +32,3 @@ export default {
   },
 };
 </script>
-
