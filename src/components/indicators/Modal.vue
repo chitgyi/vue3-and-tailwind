@@ -1,7 +1,11 @@
 <template>
   <div
-    class="flex absolute justify-center items-center inset-0 bg-opacity-30 bg-black"
-    :class="{ hidden: !isShown }"
+    class="flex fixed justify-center items-center inset-0 bg-opacity-30 bg-black pl-0"
+    :class="{
+      hidden: !isShown,
+      'md:pl-0': isCollepsedSlideBar,
+      'md:pl-44': !isCollepsedSlideBar,
+    }"
     @click.self="onDismiss"
   >
     <slot />
@@ -18,6 +22,7 @@ export default {
   setup(props) {
     const isDismissable = toRef(props, "dismissable");
     const { show, onCancel } = inject("DIALOG_PROVIDER");
+    const { isCollepsedSlideBar } = inject("APP_PROVIDER");
 
     const onDismiss = () => {
       if (isDismissable.value) {
@@ -27,9 +32,7 @@ export default {
 
     onUnmounted(() => (show.value = false));
 
-    return { isShown: show, onCancel, onDismiss };
+    return { isShown: show, onCancel, onDismiss, isCollepsedSlideBar };
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

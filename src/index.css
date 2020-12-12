@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-.center {
-    color: blue;
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
+@layer components {
+    .main-content {
+        @apply absolute overflow-auto top-14 inset-0;
+    }
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #edf2f7;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 50vh;
+    border: 3px solid #edf2f7;
+    background-color: rgba(43, 46, 255, 0.705);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+  }

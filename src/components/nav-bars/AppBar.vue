@@ -1,74 +1,59 @@
 <template>
-  <ul class="container mx-auto font-semibold font-mono">
-    <span v-for="(nav, index) in navs" :key="index">
-      <router-link
-        :to="nav.route"
-        id="router-link"
-        v-on:click.passive="onClickNav(nav.route)"
-        class="text-gray-500"
-        ><li
-          :class="{
-            'text-white': pathname == nav.route,
-          }"
-          class="flex p-1.5 space-x-1"
-        >
-          <div v-html="nav.iconPath" class="w-6 h-6"></div>
-          <div>{{ nav.title }}</div>
-        </li></router-link
-      >
-    </span>
-  </ul>
+  <div
+    class="flex h-14 bg-gray-800 items-center shadow-md pl-2 duration-500"
+    :class="{ 'md:ml-44 sm:24 duration-700': !isCollepsedSlideBar }"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="white"
+      class="w-8 h-6 sm:inline-block md:hidden cursor-pointer"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h7"
+      />
+    </svg>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      stroke="white"
+      class="w-6 h-6 hidden md:inline-block cursor-pointer"
+      @click="onCollepseSlideBar"
+    >
+      <path
+        v-if="isCollepsedSlideBar"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+      ></path>
+
+      <path
+        v-else
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
+      ></path>
+    </svg>
+
+    <a href="/" class="text-white font ml-1 font-bold cursor-pointer">POS SYSTEM</a>
+  </div>
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { inject } from "vue";
 export default {
   setup() {
-    const pathname = ref("/");
-    const navs = ref([
-      {
-        title: "Home",
-        route: "/",
-        iconPath: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-</svg>`,
-      },
-      {
-        title: "Products",
-        route: "/products",
-        iconPath: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-  <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-</svg>`,
-      },
-      {
-        title: "Contact",
-        route: "/contact",
-        iconPath: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
-</svg>`,
-      },
-    ]);
-
-    onMounted(() => {
-      pathname.value = window.location.pathname;
-    });
-
-    function onClickNav(path) {
-      pathname.value = path;
-    }
-
-    return {
-      navs,
-      onClickNav,
-      pathname,
-    };
+    const { onCollepseSlideBar, isCollepsedSlideBar } = inject("APP_PROVIDER");
+    return { onCollepseSlideBar, isCollepsedSlideBar };
   },
 };
 </script>
 
-<style scoped>
-#router-link {
-  text-decoration: none;
-}
-</style>
+<style lang="scss" scoped></style>

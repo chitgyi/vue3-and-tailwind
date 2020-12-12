@@ -10,8 +10,8 @@
 import { inject, onMounted } from "vue";
 
 import LoadingIndicator from "../components/indicators/LoadingIndicator";
-import ErrorView from "../components/views/ErrorView.vue";
-import ProductListView from "../components/views/ProductListView.vue";
+import ErrorView from "../components/views/base/ErrorView.vue";
+import ProductListView from "../components/views/product/ProductListView";
 
 export default {
   name: "Products",

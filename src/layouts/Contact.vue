@@ -11,13 +11,13 @@
           <button
             type="submit"
             @click="onCancel"
-            class="rounded shadow-md text-white border-none p-1 bg-red-600"
+            class="rounded shadow-md text-white border-none p-2 bg-red-600"
           >
             Cancel
           </button>
           <button
             type="submit"
-            class="rounded shadow-md text-white border-none p-1 bg-blue-600 col-span-2"
+            class="rounded shadow-md text-white border-none p-2 bg-blue-600 col-span-2"
           >
             Save
           </button>
