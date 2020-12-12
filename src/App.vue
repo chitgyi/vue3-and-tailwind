@@ -3,7 +3,7 @@
 
   <slide-bar />
 
-  <main-layout/>
+  <main-layout />
 </template>
 
 <script>
@@ -11,9 +11,10 @@ import { provide } from "vue";
 import useProduct from "./composables/product";
 import useDialog from "./composables/dialog";
 import useApp from "./composables/app";
+import useGoods from "./composables/goods";
 import SlideBar from "./components/nav-bars/SlideBar.vue";
 import AppBar from "./components/nav-bars/AppBar.vue";
-import MainLayout from './layouts/MainLayout.vue';
+import MainLayout from "./layouts/MainLayout.vue";
 
 export default {
   components: { SlideBar, AppBar, MainLayout },
@@ -21,6 +22,7 @@ export default {
     provide("POST_PROVIDER", useProduct());
     provide("DIALOG_PROVIDER", useDialog());
     provide("APP_PROVIDER", useApp());
+    provide("GOODS_PROVIDER", useGoods());
   },
 };
 </script>

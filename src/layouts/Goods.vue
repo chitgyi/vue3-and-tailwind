@@ -1,29 +1,82 @@
 <template>
-  <div class="">
-    <good-list-view :goods="goods" />
+  <div class="m-3">
+    <div class="flex flex-wrap items-center shadow-md p-2 rounded">
+      <serach-svg />
+      <input
+        class="border border-transparent focus:outline-none flex-auto px-3 leading-loose"
+        placeholder="Search..."
+        v-model="search"
+      />
+    </div>
+    <good-list-view
+      :goods="goods"
+      :onEdit="onEditGood"
+      :onDelete="onDelete"
+      :orderByPrice="orderByPrice"
+      :orderByQuantity="orderByQuantity"
+    />
+
+    <!-- start edit modal view -->
+    <edit-goods-modal-view :good="good" :onSave="onSaveEdit" />
+    <!-- end edit modal view -->
+
+    <!-- start delete modal view -->
+    <!-- end delete modal view -->
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { inject, onMounted, ref } from "vue";
 import GoodListView from "../components/views/goods/GoodListView.vue";
+import SerachSvg from "../assets/path/serach-svg.vue";
+import EditGoodsModalView from "../components/views/goods/EditGoodsModalView.vue";
 export default {
-  components: { GoodListView },
+  components: { GoodListView, SerachSvg, EditGoodsModalView },
   setup() {
-    const goods = ref([]);
+    const good = ref({});
+    var indexed = 0;
+    const { goods, search, loadGoods, onEdit, onDelete } = inject("GOODS_PROVIDER");
+    const { show } = inject("DIALOG_PROVIDER");
+    onMounted(() => loadGoods());
 
-    Array(100)
-      .fill(0)
-      .forEach((value, index) => {
-        goods.value.push({
-          name: `earum placeat eum modi eveniet quis ea, officia ducimus dolore similique incidunt eos maxime porro! ${index}`,
-          id: index,
-          price: index * 1000,
-          quantity: index + 1,
-        });
-      });
+    const onEditGood = (index, data) => {
+      good.value = data;
+      show.value = !show.value;
+      indexed = index;
+    };
 
-    return { goods };
+    const onSaveEdit = (data) => {
+      onEdit(indexed, data);
+      show.value = false;
+    };
+
+    const orderByPrice = (ASC = false) => {
+      if (ASC) {
+        goods.value.sort((a, b) => a.price - b.price);
+      } else {
+        goods.value.sort((a, b) => b.price - a.price);
+      }
+    };
+
+    const orderByQuantity = (ASC = false) => {
+      if (ASC) {
+        goods.value.sort((a, b) => a.quantity - b.quantity);
+      } else {
+        goods.value.sort((a, b) => b.quantity - a.quantity);
+      }
+    };
+
+    return {
+      goods,
+      search,
+      onDelete,
+      onEdit,
+      onEditGood,
+      good,
+      onSaveEdit,
+      orderByPrice,
+      orderByQuantity,
+    };
   },
 };
 </script>

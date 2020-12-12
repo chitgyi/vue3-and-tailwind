@@ -3,6 +3,8 @@ import Home from "./layouts/Home";
 import Products from "./layouts/Products";
 import Contact from "./layouts/Contact";
 import Goods from './layouts/Goods';
+import Casher from './layouts/Casher';
+import Transations from './layouts/Transations';
 
 const routes = [
   {
@@ -14,6 +16,14 @@ const routes = [
     path: "/goods",
     name: "Goods",
     component: Goods,
+  },{
+    path: "/casher",
+    name: "Casher",
+    component: Casher,
+  },{
+    path: "/transations",
+    name: "Transations",
+    component: Transations,
   },
   {
     path: "/products",
