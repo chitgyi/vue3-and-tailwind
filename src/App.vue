@@ -8,10 +8,13 @@
 
 <script>
 import { provide } from "vue";
+
 import useProduct from "./composables/product";
 import useDialog from "./composables/dialog";
 import useApp from "./composables/app";
 import useGoods from "./composables/goods";
+import useCash from "./composables/cash";
+
 import SlideBar from "./components/nav-bars/SlideBar.vue";
 import AppBar from "./components/nav-bars/AppBar.vue";
 import MainLayout from "./layouts/MainLayout.vue";
@@ -23,6 +26,7 @@ export default {
     provide("DIALOG_PROVIDER", useDialog());
     provide("APP_PROVIDER", useApp());
     provide("GOODS_PROVIDER", useGoods());
+    provide("CASH_PROVIDER", useCash());
   },
 };
 </script>

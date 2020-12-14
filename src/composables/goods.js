@@ -58,7 +58,23 @@ export default function usebaseGoods() {
         }
     }
 
+    const orderByPrice = (ASC = false) => {
+        if (ASC) {
+            goodResults.value.sort((a, b) => a.price - b.price);
+        } else {
+            goodResults.value.sort((a, b) => b.price - a.price);
+        }
+    };
+
+    const orderByQuantity = (ASC = false) => {
+        if (ASC) {
+            goodResults.value.sort((a, b) => a.quantity - b.quantity);
+        } else {
+            goodResults.value.sort((a, b) => b.quantity - a.quantity);
+        }
+    };
+
     return {
-        search, goods: goodResults, loadGoods, onEdit, onDelete
+        search, goods: goodResults, loadGoods, onEdit, onDelete, orderByQuantity, orderByPrice
     }
 }

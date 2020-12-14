@@ -35,7 +35,15 @@ export default {
   setup() {
     const good = ref({});
     var indexed = 0;
-    const { goods, search, loadGoods, onEdit, onDelete } = inject("GOODS_PROVIDER");
+    const {
+      goods,
+      search,
+      loadGoods,
+      onEdit,
+      onDelete,
+      orderByPrice,
+      orderByQuantity,
+    } = inject("GOODS_PROVIDER");
     const { show } = inject("DIALOG_PROVIDER");
     onMounted(() => loadGoods());
 
@@ -48,22 +56,6 @@ export default {
     const onSaveEdit = (data) => {
       onEdit(indexed, data);
       show.value = false;
-    };
-
-    const orderByPrice = (ASC = false) => {
-      if (ASC) {
-        goods.value.sort((a, b) => a.price - b.price);
-      } else {
-        goods.value.sort((a, b) => b.price - a.price);
-      }
-    };
-
-    const orderByQuantity = (ASC = false) => {
-      if (ASC) {
-        goods.value.sort((a, b) => a.quantity - b.quantity);
-      } else {
-        goods.value.sort((a, b) => b.quantity - a.quantity);
-      }
     };
 
     return {
@@ -80,5 +72,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>
