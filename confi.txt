@@ -1,0 +1,14 @@
+## Setup One
+## edit C:\xampp\apache\conf\extra\httpd-vhosts.conf file
+<VirtualHost *:80>
+    DocumentRoot "C:\Users\Chit Ye Aung\Web\pos\public"
+    ServerAdmin pos.chitye.com
+    <Directory "C:\Users\Chit Ye Aung\Web\pos\public">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+## Setup Two
+## Eidt C:\Windows\System32\drivers\etc\hosts file's dns name

@@ -1,0 +1,69 @@
+@url = http://pos.chitye.com/api
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wb3MuY2hpdHllLmNvbVwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYwODAxMzUzNiwiZXhwIjoxNjA4MDE3MTM2LCJuYmYiOjE2MDgwMTM1MzYsImp0aSI6IjFjVmRBaVU1MlNHRkRSamYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.BOyP0PX15xrJ-tkF_eE8-Pm47aurXdc6FTlc771qqz0
+
+@adminToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wb3MuY2hpdHllLmNvbVwvYXBpXC9hZG1pblwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MDgwMTQxMTcsImV4cCI6MTYwODAxNzcxNywibmJmIjoxNjA4MDE0MTE3LCJqdGkiOiJsRVhrd2Z1ZlE4ajVZVGhkIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.yXgvWaOJzkraIzjQgqrBpXl6xAvhDC8fY-sjH9sl80k
+
+POST {{url}}/auth/register
+Content-Type: application/json
+
+{
+    "name": "Chit Ye Aung", 
+    "username": "chityeaung",
+    "password": "chityeaung2020"
+
+}
+
+###
+
+POST {{url}}/admin/auth/register
+Content-Type: application/json
+
+{
+    "name": "Admin", 
+    "username": "admin",
+    "password": "chityeaung2020",
+    "supported-admin-password": "adminpassword"
+}
+###
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+    "username": "chityeaung",
+    "password": "chityeaung2020"
+}
+###
+POST {{url}}/admin/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "chityeaung2020"
+}
+
+###
+
+GET {{url}}/admin/auth/profile
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+
+GET {{url}}/goods
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+
+POST  {{url}}/admin/goods
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+    "name": "Goods Name", 
+    "price": 10000,
+    "quantity": 2
+}
