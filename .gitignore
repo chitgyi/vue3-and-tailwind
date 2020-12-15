@@ -1,6 +1,10 @@
 .DS_Store
 node_modules
 /dist
+/bootstrap
+/storage
+/vendor
+
 
 
 # local env files
